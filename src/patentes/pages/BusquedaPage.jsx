@@ -42,6 +42,9 @@ export const BusquedaPage = () => {
                 </thead>
                 <tbody>
                     {
+                       !patentes.length && <tr><td colSpan={8}><h3 className='text-muted'>No se encontraron resultados!</h3></td></tr>
+                    }
+                    {
                         patentes.map(({anioVehiculo, marcaVehiculo, modeloVehiculo,nombreApellidoPropietario,numeroMotorVehiculo,patente,rutPropietario,tipoVehiculo}) => (
                             <tr key={patente}>
                                 <td>
