@@ -1,0 +1,21 @@
+.principal { 
+    background: url(011.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 94vh;
+    
+  }
+
+  .abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 75vh;
+  }
+  
+  
+  .form {
+    width: 600px;
+  }
