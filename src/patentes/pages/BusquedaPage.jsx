@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getPatentes } from '../../store/slices/patentes/thunks';
 import { Navbar } from '../components/Navbar';
+import { BusquedaScreen } from '../components/BusquedaScreen';
 
 export const BusquedaPage = () => {
   const {patente} = useParams();
@@ -27,59 +28,18 @@ export const BusquedaPage = () => {
   
     : 
     <div className='container'>
-            <table className="table">
-                <thead>
-                    <tr>
-                    <th scope="col">Patente</th>
-                    <th scope="col">Tipo</th>
-                    <th scope="col">Marca</th>
-                    <th scope="col">Modelo</th>
-                    <th scope="col">Año</th>
-                    <th scope="col">N° Motor</th>
-                    <th scope="col">Rut</th>
-                    <th scope="col">Nombre</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                       !patentes.length && <tr><td colSpan={8}><h3 className='text-muted'>No se encontraron resultados!</h3></td></tr>
-                    }
-                    {
-                        patentes.map(({anioVehiculo, marcaVehiculo, modeloVehiculo,nombreApellidoPropietario,numeroMotorVehiculo,patente,rutPropietario,tipoVehiculo}) => (
-                            <tr key={patente}>
-                                <td>
-                                    {patente}
-                                </td>
-                                <td>
-                                    {tipoVehiculo}
-                                </td>
-                                <td>
-                                    {marcaVehiculo}
-                                </td>
-                                <td>
-                                    {modeloVehiculo}
-                                </td>
-                                <td>
-                                    {anioVehiculo}
-                                </td>
-                                <td>
-                                    {numeroMotorVehiculo}
-                                </td>
-                                <td>
-                                    {rutPropietario}
-                                </td>
-                                <td>
-                                    {nombreApellidoPropietario}
-                                </td>
-                            </tr>
-                        ))
-                    }
-                
-                </tbody>
-            </table>
-        </div>
-       
-        
+
+
+        {
+            !patentes.length && <h3 className='text-muted'>No se encontraron resultados!</h3>
+        }
+        {
+            patentes.map((patente) => (
+                <BusquedaScreen key={patente.patente} {...patente}/>
+            ))
+        }
+    </div>
+         
     }
     </>
     
